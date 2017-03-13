@@ -1,5 +1,7 @@
 package live.lqs.com.live2.adatpter.ViewHolder;
 
+import android.content.Context;
+
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -8,19 +10,26 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class ViewHolderPool {
 
+    private  Context mContext;
     private ConcurrentHashMap<Integer, ViewHolderFactory> mViewHolderPool = new ConcurrentHashMap();
 
-    public static ViewHolderPool getInstance() {
-        return new ViewHolderPool();
+    private ViewHolderPool(){}
+
+    public static ViewHolderPool getInstance(Context context) {
+
+        ViewHolderPool viewHolderPool = new ViewHolderPool();
+        viewHolderPool.mContext = context;
+        return viewHolderPool;
     }
 
-    public void registeredViewHolder(Integer viewType, ViewHolderFactory factory) {
+    public ViewHolderPool registeredViewHolder(Integer viewType, ViewHolderFactory factory) {
         mViewHolderPool.put(viewType, factory);
+        return this;
     }
 
     public AbsViewHolder getViewHolder(Integer viewType) {
         ViewHolderFactory viewHolderFactory = mViewHolderPool.get(viewType);
-        AbsViewHolder viewHolder = viewHolderFactory.getViewHolder();
+        AbsViewHolder viewHolder = viewHolderFactory.getViewHolder(mContext);
         return viewHolder;
     }
 }

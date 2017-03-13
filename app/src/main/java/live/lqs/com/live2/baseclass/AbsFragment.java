@@ -35,11 +35,24 @@ public abstract class AbsFragment extends Fragment {
         return mFragmentLayout;
     }
 
-    protected abstract void initData(Context context);
-
-    protected abstract void initUi(View mFragmentLayout, Context context);
-
+    /**
+     * 在于所以初始化方法中最先调用的方法用于做控件之类的与数据无关部分的初始化操作
+     * @param context
+     */
     protected abstract void init(Context context);
+
+    /**
+     * 提供作为UI的初始化操作
+     * @param fragmentLayout
+     * @param context
+     */
+    protected abstract void initUi(View fragmentLayout, Context context);
+
+    /**
+     * 数据下载等的操作
+     * @param context
+     */
+    protected abstract void initData(Context context);
 
     protected abstract int getLayoutResId();
 
