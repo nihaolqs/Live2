@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp">
+
+        <ImageView
+            android:id="@+id/iv_anchor_avatar"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_margin="10dp"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/tv_anchor_name"
+            style="@style/anchor_name"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="90dp"
+            android:text="@string/anchor" />
+
+        <TextView
+            android:id="@+id/tv_anchor_posiction"
+            android:text="@string/xiamen"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="90dp"
+            style="@style/tv_posiction" />
+
+        <TextView
+            android:id="@+id/tv_live_watchnumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="565656"
+            android:textColor="@color/color_number"
+            android:textSize="20sp"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/people"
+            android:layout_marginRight="5dp"/>
+
+        <TextView
+            android:id="@+id/people"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="人在看"
+            android:layout_alignParentRight="true"
+            android:layout_alignBottom="@+id/tv_live_watchnumber"
+            android:layout_marginRight="10dp"
+
+            />
+
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/iv_livecover"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:src="@mipmap/ic_launcher" />
+
+</LinearLayout>

@@ -3,14 +3,15 @@ package live.lqs.com.live2.model.vo;
 import android.net.Uri;
 
 import live.lqs.com.live2.adatpter.IRecyclerViewData;
+import live.lqs.com.live2.adatpter.RecyclerViewAdatpter;
 
 /**
  * Created by dell on 2017/3/13.
  */
 
-public final class LiveVO implements IRecyclerViewData{
+public final class LiveVO implements IRecyclerViewData {
 
-    public static final int ITEM_TYPE = 0x0;
+    public static final int ITEM_TYPE = 0b1 | RecyclerViewAdatpter.TYPE_CLICKABLE;
 
     private final Anchor mAnchor;
 
@@ -45,7 +46,7 @@ public final class LiveVO implements IRecyclerViewData{
 
     @Override
     public int getType() {
-        return 0;
+        return ITEM_TYPE;
     }
 
 
@@ -56,37 +57,37 @@ public final class LiveVO implements IRecyclerViewData{
         private Uri mCoverUrl;
         private Uri mLiveUrl;
 
-        LiveVoBuilder setAnchor(Anchor anchor) {
+        public LiveVoBuilder setAnchor(Anchor anchor) {
             this.mAnchor = anchor;
             return this;
         }
 
-        LiveVoBuilder setWatchNumber(int watchNumber) {
+        public LiveVoBuilder setWatchNumber(int watchNumber) {
             this.mWatchNumber = watchNumber;
             return this;
         }
 
-        LiveVoBuilder setCoverUrl(String coverUrl) {
+        public LiveVoBuilder setCoverUrl(String coverUrl) {
             this.mCoverUrl = Uri.parse(coverUrl);
             return this;
         }
 
-        LiveVoBuilder setLiveUrl(String liveUrl) {
+        public LiveVoBuilder setLiveUrl(String liveUrl) {
             this.mLiveUrl = Uri.parse(liveUrl);
             return this;
         }
 
-        LiveVoBuilder setCoverUrl(Uri coverUrl) {
+        public LiveVoBuilder setCoverUrl(Uri coverUrl) {
             this.mCoverUrl = coverUrl;
             return this;
         }
 
-        LiveVoBuilder setLiveUrl(Uri liveUrl) {
+        public LiveVoBuilder setLiveUrl(Uri liveUrl) {
             this.mLiveUrl = liveUrl;
             return this;
         }
 
-        LiveVO builder() {
+        public LiveVO builder() {
             if (mAnchor == null) {
                 throw new NullPointerException("Anchor is  null");
             }

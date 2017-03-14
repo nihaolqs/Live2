@@ -23,7 +23,7 @@ public class Anchor {
     }
 
 
-    public String getmAnchorAvaAvatarUrl() {
+    public String getmAnchorAvatarUrl() {
         return mAnchorAvaAvatarUrl;
     }
 

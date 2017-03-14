@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Live2</string>
+    <string name="anchor">主播</string>
+    <string name="xiamen">厦门</string>
 </resources>

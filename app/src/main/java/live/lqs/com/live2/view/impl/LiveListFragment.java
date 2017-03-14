@@ -1,14 +1,22 @@
 package live.lqs.com.live2.view.impl;
 
 import android.content.Context;
+import android.content.res.AssetFileDescriptor;
+import android.net.Uri;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 import live.lqs.com.live2.R;
 import live.lqs.com.live2.adatpter.RecyclerViewAdatpter;
+import live.lqs.com.live2.adatpter.ViewHolder.IRecyclerViewOnclickListener;
+import live.lqs.com.live2.adatpter.ViewHolder.LiveViewHolder;
 import live.lqs.com.live2.adatpter.ViewHolder.ViewHolderFactory;
 import live.lqs.com.live2.baseclass.AbsFragment;
+import live.lqs.com.live2.model.vo.Anchor;
 import live.lqs.com.live2.model.vo.LiveVO;
 
 /**
@@ -37,13 +45,30 @@ public class LiveListFragment extends AbsFragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         mRVLiveList.setLayoutManager(linearLayoutManager);
         mAdatpter = new RecyclerViewAdatpter<>(context);
-        mAdatpter.getViewHolderPool().registeredViewHolder(LiveVO.ITEM_TYPE,new ViewHolderFactory<   >());
+        mAdatpter.getViewHolderPool()
+                .registeredViewHolder(LiveVO.ITEM_TYPE, new ViewHolderFactory<LiveViewHolder>());
+        mAdatpter.setmOnclickListener(new IRecyclerViewOnclickListener() {
+            @Override
+            public void onClick(View view, int posiction) {
+                Toast.makeText(getContext(), "posiction : " + posiction, Toast.LENGTH_SHORT);
+            }
+        });
         mRVLiveList.setAdapter(mAdatpter);
     }
 
     @Override
     protected void initData(Context context) {
-
+        ArrayList<LiveVO> liveVOs = new ArrayList<>();
+        for (int i = 0; i < 30; i++) {
+            Anchor anchor = new Anchor("大王", "", "上海");
+            LiveVO liveVO = new LiveVO.LiveVoBuilder().setAnchor(anchor)
+                    .setCoverUrl("")
+                    .setLiveUrl("")
+                    .setWatchNumber(1000 * i)
+                    .builder();
+            liveVOs.add(liveVO);
+        }
+        mAdatpter.setDataList(liveVOs);
     }
 
     @Override
